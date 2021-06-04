@@ -7,11 +7,13 @@
         :style="{ width: process + '%' }"
       ></div>
     </div>
+    <!-- <button @click="getPosts">Get posts</button> -->
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import axios from "axios";
+import { ref, onBeforeMount } from "vue";
 
 export default {
   name: "Process",
@@ -19,6 +21,7 @@ export default {
   setup() {
     const process = ref(0);
     const counterID = ref("");
+    const posts = ref("");
 
     const counting = () => {
       counterID.value = setInterval(() => {
@@ -34,8 +37,20 @@ export default {
       clearInterval(counterID.value);
     };
 
-    onMounted(() => {
+    const getPosts = async () => {
+      try {
+        posts.value = await axios.get(
+          "https://jsonplaceholder.typicode.com/todos/1"
+        );
+        console.log(posts.value.data);
+      } catch (error) {
+        console.log(error.response); // this is the main part. Use the response property from the error object
+      }
+    };
+
+    onBeforeMount(() => {
       counting();
+      getPosts();
     });
 
     return {
