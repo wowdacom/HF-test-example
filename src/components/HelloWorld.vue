@@ -6,15 +6,17 @@
         <h1>我是燈箱的內容</h1>
       </LightBox>
     </teleport>
-    <div>
+    <!-- <div>
       <Process></Process>
-    </div>
+    </div> -->
+    <Form></Form>
   </div>
 </template>
 
 <script>
 import LightBox from "./LightBox.vue";
-import Process from "@/components/Process.vue";
+// import Process from "@/components/Process.vue";
+import Form from "@/components/Form.vue";
 
 export default {
   name: "HelloWorld",
@@ -25,7 +27,8 @@ export default {
   },
   components: {
     LightBox,
-    Process,
+    // Process,
+    Form,
   },
   props: {
     msg: String,

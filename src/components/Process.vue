@@ -42,10 +42,7 @@ export default {
         posts.value = await axios.get(
           "https://jsonplaceholder.typicode.com/todos/1"
         );
-        console.log(posts.value.data);
-      } catch (error) {
-        console.log(error.response); // this is the main part. Use the response property from the error object
-      }
+      } catch (error) {}
     };
 
     onBeforeMount(() => {
