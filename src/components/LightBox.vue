@@ -26,7 +26,6 @@ export default {
   props: {
     isOpen: {
       type: Boolean,
-      required: false,
     },
   },
   setup(props, context) {

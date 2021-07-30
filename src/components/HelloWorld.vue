@@ -3,32 +3,31 @@
     <button @click="handleLightUp">打點我開燈箱</button>
     <teleport to="body">
       <LightBox :is-open="isOpen" @closeBox="handleClose">
-        <h1>我是燈箱的內容</h1>
+        {{ msg }}
       </LightBox>
     </teleport>
-    <!-- <div>
+    <div>
       <Process></Process>
-    </div> -->
-    <Form></Form>
+    </div>
+    <!-- <Form></Form> -->
   </div>
 </template>
 
 <script>
 import LightBox from "./LightBox.vue";
-// import Process from "@/components/Process.vue";
-import Form from "@/components/Form.vue";
+import Process from "@/components/Process.vue";
 
 export default {
   name: "HelloWorld",
   data() {
     return {
       isOpen: false,
+      msg: "",
     };
   },
   components: {
     LightBox,
-    // Process,
-    Form,
+    Process,
   },
   props: {
     msg: String,

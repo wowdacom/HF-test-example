@@ -14,26 +14,34 @@ jest.mock("axios", () => ({
     { id: 2, title: "title2" },
   ]),
 }));
-
 describe("Process.vue", () => {
-  it("假定時器前進", async () => {
-    const wrapper = shallowMount(Process);
+  let wrapper = null;
+  beforeEach(() => {
+    //jest.useFakeTimers(); //放哪裡，只跑一次就好
+    wrapper = shallowMount(Process);
+  });
+  it("0%", async () => {
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 0%;"
     );
-    // wrapper.vm.counting();
+  });
+  it("1%", async () => {
     jest.runTimersToTime(100);
     await nextTick();
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 1%;"
     );
-    jest.runTimersToTime(900);
+  });
+  it("10%", async () => {
+    jest.runTimersToTime(1000);
     await nextTick();
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 10%;"
     );
   });
+});
 
+describe("Process.vue", () => {
   it("假定時器結束 clearInterval", async () => {
     jest.spyOn(window, "clearInterval");
     setInterval.mockReturnValue(123);
