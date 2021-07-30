@@ -42,7 +42,9 @@ export default {
         posts.value = await axios.get(
           "https://jsonplaceholder.typicode.com/todos/1"
         );
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     onBeforeMount(() => {
@@ -81,6 +83,7 @@ export default {
   margin-right: 0;
   height: 30px;
   display: inline-block;
+  transform: translateX(-50%);
 }
 
 .progress-wrap .progress-inner {

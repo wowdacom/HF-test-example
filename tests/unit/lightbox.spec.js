@@ -87,6 +87,5 @@ describe("LightBox.vue", () => {
     await lightboxWrapper.trigger("click");
 
     expect(wrapper.emitted().closeBox.length).toEqual(1);
-    // expect(wrapper.emitted()).toHaveProperty("closeBox");
   });
 });

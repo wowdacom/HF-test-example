@@ -27,7 +27,9 @@ describe("Process.vue", () => {
   });
   it("1%", async () => {
     jest.runTimersToTime(100);
+
     await nextTick();
+
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 1%;"
     );
@@ -35,6 +37,7 @@ describe("Process.vue", () => {
   it("10%", async () => {
     jest.runTimersToTime(1000);
     await nextTick();
+
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 10%;"
     );
@@ -44,15 +47,17 @@ describe("Process.vue", () => {
 describe("Process.vue", () => {
   it("假定時器結束 clearInterval", async () => {
     jest.spyOn(window, "clearInterval");
+
     setInterval.mockReturnValue(123);
+
     const wrapper = shallowMount(Process);
     wrapper.vm.counting();
     wrapper.vm.countingFinish();
     expect(window.clearInterval).toHaveBeenCalledWith(123);
   });
 
-  it("calss $bar start on load", async () => {
-    const wrapper = shallowMount(Process);
+  it("驗證 loading 在 mounted 之前執行", async () => {
+    shallowMount(Process);
 
     // await wrapper.get("button").trigger("click");
 

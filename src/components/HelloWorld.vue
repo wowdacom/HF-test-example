@@ -29,15 +29,11 @@ export default {
     LightBox,
     Process,
   },
-  props: {
-    msg: String,
-  },
   methods: {
     handleLightUp() {
       this.isOpen = true;
     },
     handleClose() {
-      console.log("hello");
       this.isOpen = false;
     },
   },

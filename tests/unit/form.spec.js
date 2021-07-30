@@ -1,7 +1,6 @@
 import { shallowMount, flushPromises, mount } from "@vue/test-utils";
 import Form from "@/components/Form.vue";
 import axios from "axios";
-import { nextTick } from "vue";
 
 jest.mock("axios");
 
@@ -13,8 +12,10 @@ describe("Form.vue", () => {
     const wrapper = shallowMount(Form);
     const inputName = wrapper.find('input[data-test="name"]');
     inputName.setValue("Jim");
+
     const inputMail = wrapper.find('input[data-test="mail"]');
     inputMail.setValue("wowdacom@gmail.com");
+
     const inputWish = wrapper.find('input[data-test="wish"]');
     inputWish.setValue("Have a vacation");
 
