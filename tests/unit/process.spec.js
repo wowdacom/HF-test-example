@@ -16,35 +16,43 @@ jest.mock("axios", () => ({
 }));
 
 describe("Process.vue", () => {
-  it("假定時器前進", async () => {
+  it("驗證定時器程序", async () => {
     const wrapper = shallowMount(Process);
+
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 0%;"
     );
     // wrapper.vm.counting();
     jest.runTimersToTime(100);
+
     await nextTick();
+
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 1%;"
     );
+
     jest.runTimersToTime(900);
+
     await nextTick();
+
     expect(wrapper.find('[data-test="process"]').attributes().style).toBe(
       "width: 10%;"
     );
   });
 
-  it("假定時器結束 clearInterval", async () => {
+  it("驗證 clearInterval 有清除 tiem id", async () => {
     jest.spyOn(window, "clearInterval");
+
     setInterval.mockReturnValue(123);
+
     const wrapper = shallowMount(Process);
     wrapper.vm.counting();
     wrapper.vm.countingFinish();
     expect(window.clearInterval).toHaveBeenCalledWith(123);
   });
 
-  it("calss $bar start on load", async () => {
-    const wrapper = shallowMount(Process);
+  it("驗證 loading 在 mounted 之前執行", async () => {
+    shallowMount(Process);
 
     // await wrapper.get("button").trigger("click");
 

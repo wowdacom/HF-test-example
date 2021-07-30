@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <button @click="handleLightUp">打點我開燈箱</button>
+    <!-- <button @click="handleLightUp">打點我開燈箱</button>
     <teleport to="body">
       <LightBox :is-open="isOpen" @closeBox="handleClose">
         <h1>我是燈箱的內容</h1>
       </LightBox>
-    </teleport>
+    </teleport> -->
     <!-- <div>
       <Process></Process>
     </div> -->
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import LightBox from "./LightBox.vue";
+// import LightBox from "./LightBox.vue";
 // import Process from "@/components/Process.vue";
 import Form from "@/components/Form.vue";
 
@@ -26,8 +26,8 @@ export default {
     };
   },
   components: {
-    LightBox,
-    // Process,
+    // LightBox,
+    //Process,
     Form,
   },
   props: {
